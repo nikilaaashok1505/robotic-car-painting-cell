@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="abb_irb2400_12_155" params="prefix">
+
+    <!-- BASE LINK -->
+    <link name="${prefix}base_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/visual/base_link.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/collision/base_link.stl"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- LINK 1 -->
+    <link name="${prefix}link_1">
+      <visual>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/visual/link_1.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/collision/link_1.stl"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- LINK 2 -->
+    <link name="${prefix}link_2">
+      <visual>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/visual/link_2.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/collision/link_2.stl"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- LINK 3 -->
+    <link name="${prefix}link_3">
+      <visual>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/visual/link_3.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/collision/link_3.stl"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- LINK 4 -->
+    <link name="${prefix}link_4">
+      <visual>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/visual/link_4.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/collision/link_4.stl"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- LINK 5 -->
+    <link name="${prefix}link_5">
+      <visual>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/visual/link_5.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/collision/link_5.stl"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- LINK 6 -->
+    <link name="${prefix}link_6">
+      <visual>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/visual/link_6.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/collision/link_6.stl"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- MECHANICAL LINKAGES -->
+    <link name="${prefix}link_lever_a">
+      <visual>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/visual/link_lever_a.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/collision/link_lever_a.stl"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="${prefix}link_lever_b">
+      <visual>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/visual/link_lever_b.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://painting_robot_description/meshes/abb_irb2400/collision/link_lever_b.stl"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- TOOL FRAME -->
+    <link name="${prefix}tool0"/>
+
+    <!-- JOINT 1 -->
+    <joint name="${prefix}joint_1" type="revolute">
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_1"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="-3.1416" upper="3.1416" effort="1000" velocity="2.618"/>
+    </joint>
+
+    <!-- JOINT 2 -->
+    <joint name="${prefix}joint_2" type="revolute">
+      <origin xyz="0.1 0 0.615"/>
+      <parent link="${prefix}link_1"/>
+      <child link="${prefix}link_2"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="-1.7453" upper="1.9199" effort="1000" velocity="2.618"/>
+    </joint>
+
+    <!-- JOINT 3 -->
+    <joint name="${prefix}joint_3" type="revolute">
+      <origin xyz="0 0 0.705"/>
+      <parent link="${prefix}link_2"/>
+      <child link="${prefix}link_3"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="-1.0472" upper="1.1345" effort="1000" velocity="2.618"/>
+    </joint>
+
+    <!-- JOINT 4 -->
+    <joint name="${prefix}joint_4" type="revolute">
+      <origin xyz="0 0 0.135"/>
+      <parent link="${prefix}link_3"/>
+      <child link="${prefix}link_4"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-3.49" upper="3.49" effort="500" velocity="6.2832"/>
+    </joint>
+
+    <!-- JOINT 5 -->
+    <joint name="${prefix}joint_5" type="revolute">
+      <origin xyz="0.755 0 0"/>
+      <parent link="${prefix}link_4"/>
+      <child link="${prefix}link_5"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="-2.0944" upper="2.0944" effort="500" velocity="6.2832"/>
+    </joint>
+
+    <!-- JOINT 6 -->
+    <joint name="${prefix}joint_6" type="revolute">
+      <parent link="${prefix}link_5"/>
+      <child link="${prefix}link_6"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-6.9813" upper="6.9813" effort="300" velocity="7.854"/>
+    </joint>
+
+    <!-- LINKAGE JOINTS -->
+    <joint name="${prefix}joint_lever_a" type="continuous">
+      <parent link="${prefix}link_2"/>
+      <child link="${prefix}link_lever_a"/>
+      <axis xyz="0 1 0"/>
+      <mimic joint="${prefix}joint_3" multiplier="1.0"/>
+    </joint>
+
+    <joint name="${prefix}joint_lever_b" type="continuous">
+      <origin xyz="-0.18 0 0"/>
+      <parent link="${prefix}link_3"/>
+      <child link="${prefix}link_lever_b"/>
+      <axis xyz="0 1 0"/>
+      <mimic joint="${prefix}joint_3" multiplier="-1.0"/>
+    </joint>
+
+    <!-- TOOL0 -->
+    <joint name="${prefix}joint_6-tool0" type="fixed">
+      <parent link="${prefix}link_6"/>
+      <child link="${prefix}tool0"/>
+      <origin xyz="0.085 0 0" rpy="0 1.57079632679 0"/>
+    </joint>
+
+    <!-- BASE FRAME -->
+    <link name="${prefix}base"/>
+
+    <joint name="${prefix}base_link-base" type="fixed">
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}base"/>
+    </joint>
+
+  </xacro:macro>
+
+</robot>

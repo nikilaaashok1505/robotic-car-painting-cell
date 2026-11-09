@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<robot name="abb_irb2400" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="irb2400_macro_ros2.xacro"/>
+
+  <xacro:abb_irb2400_12_155 prefix=""/>
+
+</robot>

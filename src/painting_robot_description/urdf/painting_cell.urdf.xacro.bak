@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+
+<robot name="automotive_painting_cell"
+       xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ABB robot macro -->
+  <xacro:include filename="irb2400_macro_ros2.xacro"/>
+
+  <!-- Common world frame -->
+  <link name="world"/>
+
+  <!-- CAR -->
+  <link name="car_base">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh
+          filename="package://painting_cell_description/meshes/car/automotive_painting_car.dae"
+          scale="1 1 1"/>
+      </geometry>
+    </visual>
+<!-- Generated car collision geometry -->
+
+<collision>
+  <origin xyz="-2.20188 0 0.32275" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.40258 1.87490 1.26550"/>
+  </geometry>
+</collision>
+
+
+<collision>
+  <origin xyz="-1.79930 0 0.34875" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.40258 1.87490 1.31750"/>
+  </geometry>
+</collision>
+
+
+<collision>
+  <origin xyz="-1.39672 0 0.41295" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.40258 1.87490 1.44590"/>
+  </geometry>
+</collision>
+
+
+<collision>
+  <origin xyz="-0.99414 0 0.49215" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.40258 1.87490 1.60430"/>
+  </geometry>
+</collision>
+
+
+<collision>
+  <origin xyz="-0.59156 0 0.56750" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.40258 1.87490 1.75500"/>
+  </geometry>
+</collision>
+
+
+<collision>
+  <origin xyz="-0.18897 0 0.56980" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.40258 1.87490 1.75960"/>
+  </geometry>
+</collision>
+
+
+<collision>
+  <origin xyz="0.21361 0 0.57000" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.40258 1.87490 1.76000"/>
+  </geometry>
+</collision>
+
+
+<collision>
+  <origin xyz="0.61619 0 0.56840" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.40258 1.87490 1.75680"/>
+  </geometry>
+</collision>
+
+
+<collision>
+  <origin xyz="1.01877 0 0.55600" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.40258 1.87490 1.73200"/>
+  </geometry>
+</collision>
+
+
+<collision>
+  <origin xyz="1.42135 0 0.44420" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.40258 1.87490 1.50840"/>
+  </geometry>
+</collision>
+
+
+<collision>
+  <origin xyz="1.82394 0 0.42010" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.40258 1.87490 1.46020"/>
+  </geometry>
+</collision>
+
+
+<collision>
+  <origin xyz="2.22652 0 0.38560" rpy="0 0 0"/>
+  <geometry>
+    <box size="0.40258 1.87490 1.39120"/>
+  </geometry>
+</collision>
+
+<!-- End generated collision geometry -->
+
+
+  </link>
+
+  <joint name="world_to_car" type="fixed">
+    <parent link="world"/>
+    <child link="car_base"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+  <!-- ABB IRB 2400 -->
+  <xacro:abb_irb2400_12_155 prefix=""/>
+
+  <!-- Mount robot beside car -->
+  <joint name="world_to_robot" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="-2.8 0 0" rpy="0 0 0"/>
+  </joint>
+  <!-- Spray Painting End Effector -->
+  <link name="spray_gun">
+
+    <!-- Main spray gun body -->
+    <visual>
+      <origin xyz="0 0 0.10" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.035" length="0.20"/>
+      </geometry>
+      <material name="spray_gun_body">
+        <color rgba="0.15 0.15 0.18 1"/>
+      </material>
+    </visual>
+
+    <!-- Spray nozzle -->
+    <visual>
+      <origin xyz="0 0 0.23" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.015" length="0.08"/>
+      </geometry>
+      <material name="spray_nozzle">
+        <color rgba="0.75 0.75 0.78 1"/>
+      </material>
+    </visual>
+  <!-- Collision geometry for spray gun -->
+  <collision>
+    <origin xyz="0 0 0.10" rpy="0 0 0"/>
+    <geometry>
+      <cylinder radius="0.035" length="0.20"/>
+    </geometry>
+  </collision>
+  <!-- Collision geometry for spray nozzle -->
+  <collision>
+    <origin xyz="0 0 0.23" rpy="0 0 0"/>
+    <geometry>
+      <cylinder radius="0.015" length="0.08"/>
+    </geometry>
+  </collision>
+  </link>
+
+  <!-- Attach spray gun to robot flange -->
+  <joint name="tool0_to_spray_gun" type="fixed">
+    <parent link="tool0"/>
+    <child link="spray_gun"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+</robot>

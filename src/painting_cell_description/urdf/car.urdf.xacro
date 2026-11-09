@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="painting_vehicle">
+
+  <!-- Vehicle dimensions in metres -->
+  <xacro:property name="car_length" value="4.8"/>
+  <xacro:property name="car_width" value="1.9"/>
+  <xacro:property name="car_height" value="1.6"/>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0.8"/>
+      <mass value="1200"/>
+      <inertia ixx="500" ixy="0" ixz="0"
+               iyy="1500" iyz="0" izz="1700"/>
+    </inertial>
+
+    <!-- Main lower body -->
+    <visual>
+      <origin xyz="0 0 0.72"/>
+      <geometry>
+        <box size="4.8 1.68 0.65"/>
+      </geometry>
+      <material name="car_body">
+        <color rgba="0.65 0.68 0.72 1"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.72"/>
+      <geometry>
+        <box size="4.8 1.68 0.65"/>
+      </geometry>
+    </collision>
+
+    <!-- Upper cabin -->
+    <visual>
+      <origin xyz="-0.15 0 1.32"/>
+      <geometry>
+        <box size="2.55 1.50 0.55"/>
+      </geometry>
+      <material name="windows">
+        <color rgba="0.12 0.18 0.24 1"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="-0.15 0 1.32"/>
+      <geometry>
+        <box size="2.55 1.50 0.55"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Wheel macro -->
+  <xacro:macro name="wheel" params="name x y">
+    <link name="${name}">
+      <visual>
+        <origin rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.32" length="0.22"/>
+        </geometry>
+        <material name="tyre">
+          <color rgba="0.035 0.035 0.035 1"/>
+        </material>
+      </visual>
+
+      <collision>
+        <origin rpy="1.5708 0 0"/>
+        <geometry>
+          <cylinder radius="0.32" length="0.22"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="${name}"/>
+      <origin xyz="${x} ${y} 0.32"/>
+    </joint>
+  </xacro:macro>
+
+  <!-- Four wheels -->
+  <xacro:wheel name="front_left_wheel"  x="1.55"  y="0.84"/>
+  <xacro:wheel name="front_right_wheel" x="1.55"  y="-0.84"/>
+  <xacro:wheel name="rear_left_wheel"   x="-1.55" y="0.84"/>
+  <xacro:wheel name="rear_right_wheel"  x="-1.55" y="-0.84"/>
+
+</robot>

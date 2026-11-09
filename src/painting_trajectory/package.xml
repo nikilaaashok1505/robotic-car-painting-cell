@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>painting_trajectory</name>
+  <version>0.0.1</version>
+  <description>Cartesian painting trajectory generation for ABB IRB 2400</description>
+
+  <maintainer email="nikilaa.ashok1505@gmail.com">Nikilaa</maintainer>
+
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>geometry_msgs</depend>
+  <depend>moveit_ros_planning_interface</depend>
+  <depend>moveit_msgs</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot name="painting_car">
+
+  <link name="world"/>
+
+  <link name="car_base">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh
+          filename="package://painting_cell_description/meshes/car/automotive_painting_car.dae"
+          scale="1 1 1"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.7" rpy="0 0 0"/>
+      <geometry>
+        <box size="4.8 1.9 1.4"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+  <joint name="world_to_car" type="fixed">
+    <parent link="world"/>
+    <child link="car_base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+</robot>
