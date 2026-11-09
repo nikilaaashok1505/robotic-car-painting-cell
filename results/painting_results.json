@@ -1,0 +1,17 @@
+{
+  "group": "arm",
+  "tip_link": "tool0",
+  "standoff": 0.0,
+  "passes": [
+    {
+      "name": "rear_body",
+      "waypoints": 10,
+      "path_length_m": 4.8,
+      "approach_ok": true,
+      "cartesian_fraction": 1.0,
+      "duration_s": 11.82,
+      "trajectory_points": 120,
+      "executed": true
+    }
+  ]
+}
