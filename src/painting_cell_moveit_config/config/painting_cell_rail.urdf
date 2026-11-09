@@ -134,7 +134,7 @@
   <joint name="world_to_rail" type="fixed">
     <parent link="world"/>
     <child link="rail_base"/>
-    <origin rpy="0 0 0.000000" xyz="-2.800 -1.400 0"/>
+    <origin rpy="0 0 -1.570796" xyz="3.000 2.800 0"/>
   </joint>
   <!-- BASE LINK -->
   <link name="base_link">
@@ -438,6 +438,17 @@
     </joint>
   </ros2_control>
   <!-- visual-only rails of the other stations -->
+  <link name="rail_vis_near">
+    <visual>
+      <origin xyz="2.8 0 0.08"/>
+      <geometry><box size="6.0 0.25 0.16"/></geometry>
+      <material name="rail_material_near"><color rgba="0.25 0.28 0.32 1"/></material>
+    </visual>
+  </link>
+  <joint name="world_to_rail_vis_near" type="fixed">
+    <parent link="world"/><child link="rail_vis_near"/>
+    <origin rpy="0 0 0.000000" xyz="-2.800 -1.400 0"/>
+  </joint>
   <link name="rail_vis_far">
     <visual>
       <origin xyz="2.8 0 0.08"/>
@@ -459,16 +470,5 @@
   <joint name="world_to_rail_vis_front" type="fixed">
     <parent link="world"/><child link="rail_vis_front"/>
     <origin rpy="0 0 1.570796" xyz="-3.000 -2.800 0"/>
-  </joint>
-  <link name="rail_vis_rear">
-    <visual>
-      <origin xyz="2.8 0 0.08"/>
-      <geometry><box size="6.0 0.25 0.16"/></geometry>
-      <material name="rail_material_rear"><color rgba="0.25 0.28 0.32 1"/></material>
-    </visual>
-  </link>
-  <joint name="world_to_rail_vis_rear" type="fixed">
-    <parent link="world"/><child link="rail_vis_rear"/>
-    <origin rpy="0 0 -1.570796" xyz="3.000 2.800 0"/>
   </joint>
 </robot>
