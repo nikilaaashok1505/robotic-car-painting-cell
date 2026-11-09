@@ -1,6 +1,6 @@
 # Robotic Car Painting Cell Simulation
 
-- **Name:** [Your Full Name]
+- **Name:** Nikilaa Ashok
 - **Software used:** ROS 2 Humble, MoveIt 2, RViz2, Python (numpy, scipy, trimesh)
 - **Robot selected:** ABB IRB 2400 on a 5.6 m linear rail (7th axis), with a spray gun end-effector
 
